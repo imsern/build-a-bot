@@ -1,32 +1,43 @@
 <template>
-  <!-- <header>
+  <header>
     <nav>
-      <ul>
-        <li class="nav-item">
-            <img src="./assets/build-a-bot-logo.png" alt="logo">
-            Build-a-Bot
-        </li>
-        <li>
+      <div class="nav-item">
+        <router-link class="nav-link" :to="{ name: 'Home' }" exact>
+          <img src="./assets/build-a-bot-logo.png" class="logo" />
+          Build-a-Bot
+        </router-link>
+      </div>
+      <div class="nav-item">
+        <router-link class="nav-link" :to="{ name: 'Build' }" exact>
+          Build
+        </router-link>
+      </div>
+      <!-- <li>
           User: {{ user.userName }}
           <button @click="changeUserName()">Change</button>
-        </li>
-      </ul>
+        </li> -->
     </nav>
-  </header> -->
-  <main>
-    <RobotBuilder />
-  </main>
+  </header>
+  <div class="container">
+    <aside class="aside">
+      <router-view name="sidebar" />
+    </aside>
+    <main>
+      <router-view />
+      <!-- <RobotBuilder /> -->
+    </main>
+  </div>
 </template>
 
 <script>
 // import HomePage from './home/HomePage.vue';
-import RobotBuilder from './build/RobotBuilder.vue';
+// import RobotBuilder from './build/RobotBuilder.vue';
 // import Search from './search/Search.vue';
 
 export default {
   name: 'App',
   components: {
-    RobotBuilder,
+    // RobotBuilder,
     // Search,
   },
   // data() {
@@ -53,19 +64,43 @@ body {
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }
-.nav-item {
-  height: 100px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-content: center;
-  text-align: center;
-}
 main {
-  margin: 0 auto;
   padding: 30px;
   background-color: white;
-  width: 1024px;
+  width: 964px;
+  min-height: 300px;
+}
+header {
+  width: 1184px;
+  background: #999;
+  margin: 0 auto;
+}
+.nav-item {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 22px;
+  border-right: 1px solid rgba(190, 190, 190, 0.5);
+}
+.logo {
+  vertical-align: middle;
+  height: 50px;
+}
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+}
+.router-link-active {
+  color: white;
+}
+.container {
+  display: flex;
+  margin: 10px auto 0 auto;
+  justify-content: center;
+}
+.aside {
+  padding: 30px;
+  background-color: #aaa;
+  width: 100px;
   min-height: 300px;
 }
 </style>
