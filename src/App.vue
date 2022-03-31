@@ -12,6 +12,14 @@
           Build
         </router-link>
       </div>
+      <div class="nav-item cart">
+        <router-link class="nav-link" :to="{ name: 'Cart' }" exact>
+          Cart
+        </router-link>
+        <div class="cart-items">
+          {{ cart.length }}
+        </div>
+      </div>
       <!-- <li>
           User: {{ user.userName }}
           <button @click="changeUserName()">Change</button>
@@ -36,6 +44,11 @@
 
 export default {
   name: 'App',
+  computed: {
+    cart() {
+      return this.$store.state.cart;
+    },
+  },
   components: {
     // RobotBuilder,
     // Search,
@@ -81,6 +94,11 @@ header {
   font-size: 22px;
   border-right: 1px solid rgba(190, 190, 190, 0.5);
 }
+.nav-item.cart{
+  position: relative;
+  margin-left: auto;
+  border-right: none;
+}
 .logo {
   vertical-align: middle;
   height: 50px;
@@ -102,5 +120,16 @@ header {
   background-color: #aaa;
   width: 100px;
   min-height: 300px;
+}
+.cart-items{
+  position: absolute;
+  top: -5px;
+  right: -9px;
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 100px;
+  background-color: mediumseagreen;
 }
 </style>
