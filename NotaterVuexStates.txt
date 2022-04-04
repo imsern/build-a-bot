@@ -1,0 +1,23 @@
+actions: {
+    getParts({commit}) {
+        axios.get('/api/parts)
+    }
+}
+
+npm install axios --save
+
+import axios from 'axios';
+
+
+new file -> vue.config.js -> sett inn:
+
+module.exports = {
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:8081',
+                changeOrigin: true,
+            }
+        }
+    }
+}
